@@ -18,14 +18,26 @@ class Create extends Component
     #[Rule(["required","numeric", 'gt:0'])]
 
     public int $hours = 0;
+    public bool $agree = false;
 
     public function save()
     {
+        
+        $this->validate();
+        
+        if(!$this->agree){
+            $this->addError('agree', 'Você precisa concordar com os termos de uso');
+        
+            return;
+        }
+
         $this->project->proposals()
             ->updateOrCreate(
                 ['email' => $this->email],
                 ['hours' => $this->hours]
             );
+
+            $this->modal = false;
     }
     public function render()
     {
