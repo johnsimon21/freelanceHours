@@ -8,4 +8,8 @@ export default defineConfig({
             refresh: true,
         }),
     ],
+    build: {
+        outDir: 'public/build/', // Verifique se este caminho está correto
+        manifest: true,
+    },
 });
