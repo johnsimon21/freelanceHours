@@ -13,9 +13,18 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
+
+     
     public function run(): void
     {
-        User::query()->delete();
+
+        \DB::statement('PRAGMA foreign_keys = OFF;');
+        User::truncate();
+        Project::truncate();
+        Proposal::truncate();
+        \DB::statement('PRAGMA foreign_keys = ON;'); // Reabilita as chaves estrangeiras
+    
+
         User::factory()->count(200)->create();
         
         User::query()->inRandomOrder()->limit(10)->get()

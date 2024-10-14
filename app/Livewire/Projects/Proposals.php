@@ -10,6 +10,6 @@ class Proposals extends Component
     public Project $project;
     public function render()
     {
-        return view('livewire.projects.proposals');
+        return view('livewire.projects.proposalsComponent');
     }
 }
