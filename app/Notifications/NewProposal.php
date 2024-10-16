@@ -38,7 +38,7 @@ class NewProposal extends Notification
         return (new MailMessage)
                     ->line('Você recebeu uma nova proposta')
                     ->action('Veja o seu projeto', route('projects.show', $this->project->id))
-                    ->line('Obrigado');
+                    ->line('Obrigado!');
     }
 
     /**

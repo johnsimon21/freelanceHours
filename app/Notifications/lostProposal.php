@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class lostProposal extends Notification
+class lostProposal extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -36,8 +36,8 @@ class lostProposal extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-                    ->line('Você perdeu posição no projecto: ' . $this->project->title)
-                    ->action('Ver o projecto', route('projects.show', $this->project))
+                    ->line('Você perdeu posição no projeto: ' . $this->project->title)
+                    ->action('Ver o projeto', route('projects.show', $this->project))
                     ->line('Obrigado!!');
     }
 
